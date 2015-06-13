@@ -1,0 +1,101 @@
+.hor-minimalist-b
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	background: #fff;
+	margin: 45px;
+	width: 90%;
+	border-collapse: collapse;
+	text-align: left;
+}
+.hor-minimalist-b th
+{
+	font-size: 14px;
+	font-weight: normal;
+	color: #039;
+	padding: 10px 8px;
+	border-bottom: 2px solid #6678b1;
+}
+.hor-minimalist-b td
+{
+	border-bottom: 1px solid #ccc;
+	color: #669;
+	padding: 6px 8px;
+}
+.hor-minimalist-b tbody tr:hover td
+{
+	color: #009;
+}
+
+#header {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	width:80%;
+}
+
+#footer {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	width:100%;
+	text-align: right;
+}
+
+#container {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	width:80%;
+	border-width:1px;
+	border-color:#000000;
+	border-style:solid;
+	padding: 5px;
+}
+
+#stage1 fieldset
+{
+	border-style:none;
+	padding: 0px;
+	text-align:right;
+}
+
+#stage1 fieldset input
+{
+	margin-right: 0px;
+}
+
+#stage2 fieldset {
+  padding: 1em;
+  font:80%/1 sans-serif;
+  }
+
+#stage3 fieldset {
+  padding: 1em;
+  font:80%/1 sans-serif;
+  margin-top: 20px;
+  }
+
+label {
+  float:left;
+  width:10%;
+  margin-right:0.5em;
+  padding-top:0.2em;
+  text-align:right;
+  font-weight:bold;
+  }
+
+input
+{
+  display:inline-block;
+}
+
+#submit
+{
+	text-align:right;
+}
+
+#submit input
+{
+	margin-right: 0px;
+}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<form class="form-signin">
+    <h1 class="form-signin-heading">Journal Manager Login</h1>
+    <fieldset>
+        {% csrf_token %}
+        <label for="username" class="sr-only">Username</label>
+        <input type="text" id="username" class="form-control" placeholder="Username" required autofocus>
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" id="password" class="form-control" placeholder="Password" required>
+    </fieldset>
+    <fieldset>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </fieldset>
+</form>
+{% endblock content %}

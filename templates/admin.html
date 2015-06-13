@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ title }}: Management
+{% endblock title %}
+
+{% block callout %}
+<div class="jumbotron">
+    <div class="container">
+        <h1>Overlay Journal Management</h1>
+        <p>In this space you can add and remove articles, issues and volumes to the overlay journal.</p>
+    </div>
+</div>
+{% endblock callout %}
+
+{% block content %}
+<script>
+        $( "#manageli" ).attr('class', 'active');
+    </script>
+
+<div class="container">
+<div class="row">
+    <form name="volissueadd" method="post" action="/newissue/">
+        {% csrf_token %}
+        <div class="col-md-5">Volume: <input type="text" name="volume"/></div>
+        <div class="col-md-5">Issue: <input type="text" name="issue"/></div>
+        <div class="col-md-2"><button type="submit" class="btn btn-primary">Add</button></div>
+    </form>
+</div>
+
+</div>
+
+<div class="container">
+<hr/>
+
+    {% for container in containers %}
+    <h1>Volume {{  container.volume }}, Issue {{ container.issue }}</h1>
+    <div class="row">
+    <form name="volissueadd" method="post" action="/newarticle/{{ container.id }}/">
+        {% csrf_token %}
+        <div class="col-md-12">Add new article by DOI: <input type="text" name="doi"/> <button type="submit" class="btn btn-primary">Add</button></div>
+    </form>
+
+    </div>
+
+        <hr/>
+
+        {% for article in container.local_container.all %}
+            <div class="row">
+                <div class="col-md-8">{{ article.get_authors }}, <a href="{{ article.remote_container.url }}">{{ article.title }}</a> in <i>{{ article.remote_container.title }}</i> {{ article.remote_container.volume }}({{ article.remote_container.issue }})</div>
+                <div class="col-md-4"><form name="removearticle" method="post" action="/delarticle/{{ article.id }}/">{% csrf_token %}<button type="submit" class="btn btn-danger">Remove article</button></form></div>
+            </div>
+            <hr/>
+        {% endfor %}
+    {% endfor %}
+
+</div>
+{% endblock content %}

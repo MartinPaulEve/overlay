@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block content %}
+    <script>
+        $( "#homeli" ).attr('class', 'active');
+        $( "body" ).attr('style', 'background-color: #EEE');
+    </script>
+
+    <div class="jumbotron" style="background-color: lightgray">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-8"><h1>{{ title }}</h1></div>
+            <div class="col-md-2"><p style="margin-top:35px;"><a class="btn btn-success" href="https://submit.openlibhums.org" role="button">Submit an Article</a></p></div>
+            <div class="col-md-2"><p style="margin-top:35px;"><img src="{% static "logo.png" %}" alt="Publisher logo"></p></div>
+         </div>
+      </div>
+    </div>
+
+    <div class="container" style="background-color: #ffffff">
+        <div class="row">
+            <div class="col-md-12">{{ title }} is an overlay journal at the Open Library of Humanities, edited by {{ editor }}. All the material that appears here has been published and peer reviewed elsewhere. The purpose of an overlay journal is to curate material and to place value on the editorial function.</div>
+        </div>
+    </div>
+
+    <div class="container" style="background-color: #ffffff; margin-top:20px;">
+        <div class="row">
+            <div class="col-md-12"><h2>Current Issue</h2></div>
+        </div>
+
+        <div class="row" style="margin-bottom:50px;">
+            <div class="col-md-12">Volume {{ container.volume }}, Issue {{ container.issue }} ({{ container.date.year }})</div>
+        </div>
+
+        {% for article in container.local_container.all %}
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2"><img src="{% static "logo.png" %}" alt="Publisher logo"></div>
+                <div class="col-md-9">
+                    <p><a href="{{ article.remote_container.url }}">{{ article.title }}</a></p>
+                    <p>{{ article.get_authors }}</p>
+                    <p><i>{{ article.remote_container.title }}</i> {{ article.remote_container.volume }}({{ article.remote_container.issue }})</p>
+                </div>
+            </div>
+            <hr/>
+        {% endfor %}
+    </div>
+{% endblock %}
